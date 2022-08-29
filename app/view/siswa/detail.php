@@ -1,14 +1,17 @@
 <div id="content" class="container">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Edit Data
-    </button>
+
+    <div class="d-flex">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Edit Data
+        </button>
 
 
-    <form action="<?= BASE_URL; ?>/siswa/hapus" method="post">
-        <input type="text" class="form-control" id="id" name="id" value="<?= $data['siswa']['id']; ?>" hidden>
-        <button type="submit" class="btn btn-danger">Hapus</button>
-    </form>
+        <form class="mx-2" action="<?= BASE_URL; ?>/siswa/hapus" method="post">
+            <input type="text" class="form-control" id="id" name="id" value="<?= $data['siswa']['id']; ?>" hidden>
+            <button type="submit" class="btn btn-danger">Hapus</button>
+        </form>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -26,7 +29,7 @@
                             <input type="text" class="form-control" id="nama" name="nama" value="<?= $data['siswa']['nama']; ?>">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="jenis_kelamin">Jenis Kelamin</la bel>
+                            <label for="jenis_kelamin">Jenis Kelamin</label>
                                 <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
                                     <option <?= $data['siswa']['jenis_kelamin'] != 'Laki-laki' ?: 'selected' ?> value="Laki-laki">Laki - laki</option>
                                     <option <?= $data['siswa']['jenis_kelamin'] != 'Perempuan' ?: 'selected' ?> value="Perempuan">Perempuan</option>

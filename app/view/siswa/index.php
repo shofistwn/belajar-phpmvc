@@ -40,10 +40,11 @@
     </div>
 
 
-    <h1 class="mt-5">Data Siswa</h1>
+    <h1 class="mt-4">Data Siswa</h1>
     <ul class="list-group">
         <?php foreach ($data['siswa'] as $siswa) : ?>
-            <li class="list-group-item"><?= $siswa['nama']; ?>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <?= $siswa['nama']; ?>
 
                 <a class="btn btn-primary" href="<?= BASE_URL; ?>/siswa/detail/<?= $siswa['id']; ?>">Detail</a>
             </li>
