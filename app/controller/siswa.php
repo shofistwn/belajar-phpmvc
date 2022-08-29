@@ -30,4 +30,27 @@ class Siswa extends Controller
             header('Location: ' . BASE_URL . '/siswa');
         }
     }
+
+    public function edit()
+    {
+        $data['id'] = $_POST['id'];
+        $data['nama'] = $_POST['nama'];
+        $data['jenis_kelamin']    = $_POST['jenis_kelamin'];
+        $data['alamat'] = $_POST['alamat'];
+
+        $this->model('SiswaModel')->editData($data);
+        if (!empty($data)) {
+            header('Location: ' . BASE_URL . '/siswa/detail/' . $data['id']);
+        }
+    }
+
+    public function hapus()
+    {
+        $data['id'] = $_POST['id'];
+        
+        $this->model('SiswaModel')->hapusData($data);
+        if (!empty($data)) {
+            header('Location: ' . BASE_URL . '/siswa');
+        }
+    }
 }
