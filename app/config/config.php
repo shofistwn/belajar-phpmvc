@@ -1,5 +1,5 @@
 <?php
-define('BASE_URL', "http://localhost/belajar_phpmvc/public");
+define('BASE_URL', "http://localhost/belajar-phpmvc/public");
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');

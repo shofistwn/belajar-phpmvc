@@ -5,7 +5,7 @@ class Guru extends Controller
     {
         $data['judul'] = "Data Guru";
         $data['guru'] = $this->model('GuruModel')->getGuru();
-        $data['jurusan'] = $this->model('GuruModel')->getJurusan();
+        $data['jurusan'] = $this->model('JurusanModel')->getJurusan();
         $this->view('templates/header', $data);
         $this->view('guru/index', $data);
         $this->view('templates/footer');
@@ -15,6 +15,7 @@ class Guru extends Controller
     {
         $data['judul'] = "Detail Guru";
         $data['guru'] = $this->model('GuruModel')->getGuruById($id);
+        $data['jurusan'] = $this->model('JurusanModel')->getJurusan();
         $this->view('templates/header', $data);
         $this->view('guru/detail', $data);
         $this->view('templates/footer');
@@ -24,7 +25,7 @@ class Guru extends Controller
     {
         $data['judul'] = "Detail Guru";
         $data['guru'] = $this->model('GuruModel')->getGuruById($id);
-        $data['jurusan'] = $this->model('GuruModel')->getJurusan();
+        $data['jurusan'] = $this->model('JurusanModel')->getJurusan();
         $this->view('templates/header', $data);
         $this->view('guru/edit', $data);
         $this->view('templates/footer');

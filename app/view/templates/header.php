@@ -18,7 +18,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="<?= BASE_URL; ?>">Home</a>
                     </li>
@@ -27,13 +27,10 @@
                             Jurusan
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Teknik Konstruksi dan Perumahan</a></li>
-                            <li><a class="dropdown-item" href="#">Desain Pemodelan dan Informasi Bangunan</a></li>
-                            <li><a class="dropdown-item" href="#">Teknik Pemanasan, Tata Udara dan Pendinginan</a></li>
-                            <li><a class="dropdown-item" href="#">Teknik Pengelasan</a></li>
-                            <li><a class="dropdown-item" href="#">Rekayasa Perangkat Lunak</a></li>
-                            <li><a class="dropdown-item" href="#">Kuliner</a></li>
-                            <li><a class="dropdown-item" href="#">Akuntansi</a></li>
+
+                            <?php foreach ($data['jurusan'] as $jurusan) : ?>
+                                <li><a class="dropdown-item" href="<?= BASE_URL; ?>/jurusan/detail/<?= $jurusan['id']; ?>"><?= $jurusan['nama']; ?></a></li>
+                            <?php endforeach; ?>
                         </ul>
                     </li>
                     <li class="nav-item">

@@ -75,7 +75,7 @@
                     <div class="form-group mb-3">
                         <label for="jenis_kelamin">Mata Pelajaran</label>
                         <select class="form-select" id="jenis_kelamin" name="mata_pelajaran">
-                            <option value="">Pilih:</option>
+                            <option value="" selected disabled>Pilih:</option>
                             <?php
                             foreach ($data['jurusan'] as $jurusan) : ?>
                                 <option value="<?= $jurusan['nama']; ?>"><?= $jurusan['nama']; ?></option>

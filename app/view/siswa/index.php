@@ -21,6 +21,7 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Jenis Kelamin</th>
                             <th scope="col">Alamat</th>
+                            <th scope="col">Jurusan</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -32,6 +33,7 @@
                                 <td><?= $siswa['nama']; ?></td>
                                 <td><?= $siswa['jenis_kelamin']; ?></td>
                                 <td><?= $siswa['alamat']; ?></td>
+                                <td><?= $siswa['jurusan']; ?></td>
                                 <td>
                                     <div class="d-flex">
                                         <a href="<?= BASE_URL; ?>/siswa/detail/<?= $siswa['id']; ?>" class="btn btn-primary">Detail</a>
@@ -85,41 +87,15 @@
                         <label for="alamat">Alamat</label>
                         <textarea class="form-control" name="alamat" id="" cols="3"></textarea>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Edit Data -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Data Siswa</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="<?= BASE_URL; ?>/siswa/edit" method="post">
-                <div class="modal-body">
-                    <input type="text" class="form-control" id="id" name="id" value="<?= $data['siswa']['id']; ?>" hidden>
                     <div class="form-group mb-3">
-                        <label for="nama">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $data['siswa']['nama']; ?>">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="jenis_kelamin">Jenis Kelamin</label>
-                        <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
-                            <option <?= $data['siswa']['jenis_kelamin'] != 'Laki-laki' ?: 'selected' ?> value="Laki-laki">Laki - laki</option>
-                            <option <?= $data['siswa']['jenis_kelamin'] != 'Perempuan' ?: 'selected' ?> value="Perempuan">Perempuan</option>
+                        <label for="jenis_kelamin">Jurusan</label>
+                        <select class="form-select" id="jenis_kelamin" name="jurusan">
+                            <option value="" selected disabled>Pilih:</option>
+                            <?php
+                            foreach ($data['jurusan'] as $jurusan) : ?>
+                                <option value="<?= $jurusan['nama']; ?>"><?= $jurusan['nama']; ?></option>
+                            <?php endforeach; ?>
                         </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="alamat">Alamat</label>
-                        <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $data['siswa']['alamat']; ?>">
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -34,24 +34,26 @@ class SiswaModel
         $getId = $this->getId();
         $id = $getId['id'] + 1;
 
-        $query = "insert into " . $this->table . " values (:id, :nama, :jenis_kelamin, :alamat)";
+        $query = "insert into " . $this->table . " values (:id, :nama, :jenis_kelamin, :alamat, :jurusan)";
         $this->db->query($query);
         $this->db->bind('id', $id);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
         $this->db->bind('alamat', $data['alamat']);
+        $this->db->bind('jurusan', $data['jurusan']);
         $this->db->execute();
         return $this->db->rowCount();
     }
 
     public function updateData($data)
     {
-        $query = "UPDATE " . $this->table . " SET id=:id, nama=:nama, jenis_kelamin=:jenis_kelamin, alamat=:alamat where id=:id";
+        $query = "UPDATE " . $this->table . " SET id=:id, nama=:nama, jenis_kelamin=:jenis_kelamin, alamat=:alamat, jurusan=:jurusan where id=:id";
         $this->db->query($query);
         $this->db->bind('id', $data['id']);
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
         $this->db->bind('alamat', $data['alamat']);
+        $this->db->bind('jurusan', $data['jurusan']);
         $this->db->execute();
         return $this->db->rowCount();
     }

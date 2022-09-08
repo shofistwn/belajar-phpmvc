@@ -16,12 +16,6 @@ class GuruModel
         return $this->db->resultAll();
     }
 
-    public function getJurusan()
-    {
-        $this->db->query("select * from data_jurusan");
-        return $this->db->resultAll();
-    }
-
     public function getGuruById($id)
     {
         $this->db->query("select * from " . $this->table . " where id=:id");

@@ -5,6 +5,7 @@ class Siswa extends Controller
     {
         $data['judul'] = "Data Siswa";
         $data['siswa'] = $this->model('SiswaModel')->getSiswa();
+        $data['jurusan'] = $this->model('JurusanModel')->getJurusan();
         $this->view('templates/header', $data);
         $this->view('siswa/index', $data);
         $this->view('templates/footer');
@@ -14,6 +15,7 @@ class Siswa extends Controller
     {
         $data['judul'] = "Detail Siswa";
         $data['siswa'] = $this->model('SiswaModel')->getSiswaById($id);
+        $data['jurusan'] = $this->model('JurusanModel')->getJurusan();
         $this->view('templates/header', $data);
         $this->view('siswa/detail', $data);
         $this->view('templates/footer');
@@ -23,6 +25,7 @@ class Siswa extends Controller
     {
         $data['judul'] = "Detail Siswa";
         $data['siswa'] = $this->model('SiswaModel')->getSiswaById($id);
+        $data['jurusan'] = $this->model('JurusanModel')->getJurusan();
         $this->view('templates/header', $data);
         $this->view('siswa/edit', $data);
         $this->view('templates/footer');
