@@ -22,11 +22,25 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="<?= BASE_URL; ?>">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL; ?>/guru">Data Guru</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Jurusan
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Teknik Konstruksi dan Perumahan</a></li>
+                            <li><a class="dropdown-item" href="#">Desain Pemodelan dan Informasi Bangunan</a></li>
+                            <li><a class="dropdown-item" href="#">Teknik Pemanasan, Tata Udara dan Pendinginan</a></li>
+                            <li><a class="dropdown-item" href="#">Teknik Pengelasan</a></li>
+                            <li><a class="dropdown-item" href="#">Rekayasa Perangkat Lunak</a></li>
+                            <li><a class="dropdown-item" href="#">Kuliner</a></li>
+                            <li><a class="dropdown-item" href="#">Akuntansi</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL; ?>/siswa">Data Siswa</a>
+                        <a class="nav-link" href="<?= BASE_URL; ?>/guru">Guru</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= BASE_URL; ?>/siswa">Siswa</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= BASE_URL; ?>/about">About</a>

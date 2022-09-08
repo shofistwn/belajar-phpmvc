@@ -39,7 +39,6 @@ class App
         );
     }
 
-
     public function parseURL()
     {
         if (isset($_GET['url'])) {

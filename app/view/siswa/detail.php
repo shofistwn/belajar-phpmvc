@@ -1,59 +1,24 @@
 <div id="content" class="container">
 
-    <div class="d-flex">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Edit Data
-        </button>
-
-
-        <form class="mx-2" action="<?= BASE_URL; ?>/siswa/hapus" method="post">
-            <input type="text" class="form-control" id="id" name="id" value="<?= $data['siswa']['id']; ?>" hidden>
-            <button type="submit" class="btn btn-danger">Hapus</button>
-        </form>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="<?= BASE_URL; ?>/siswa/edit" method="post">
-                    <div class="modal-body">
-                        <input type="text" class="form-control" id="id" name="id" value="<?= $data['siswa']['id']; ?>" hidden>
-                        <div class="form-group mb-3">
-                            <label for="nama">Nama</label>
-                            <input type="text" class="form-control" id="nama" name="nama" value="<?= $data['siswa']['nama']; ?>">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="jenis_kelamin">Jenis Kelamin</label>
-                                <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
-                                    <option <?= $data['siswa']['jenis_kelamin'] != 'Laki-laki' ?: 'selected' ?> value="Laki-laki">Laki - laki</option>
-                                    <option <?= $data['siswa']['jenis_kelamin'] != 'Perempuan' ?: 'selected' ?> value="Perempuan">Perempuan</option>
-                                </select>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="alamat">Alamat</label>
-                            <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $data['siswa']['alamat']; ?>">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
+    <div class="card mx-auto" style="width: 28rem;">
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" value="<?= $data['siswa']['nama']; ?>" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="jenis_kelamin">Jenis Kelamin</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" value="<?= $data['siswa']['jenis_kelamin']; ?>" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput2" class="form-label">Alamat</label>
+                <textarea class="form-control" id="exampleFormControlInput2" name="alamat" disabled><?= $data['siswa']['alamat']; ?></textarea>
+            </div>
+            <div class="text-center">
+                <a href="<?= BASE_URL; ?>/siswa" class="btn btn-secondary">Kembali</a>
+                <a href="<?= BASE_URL; ?>/siswa/edit/<?= $data['siswa']['id']; ?>" class="btn btn-warning">Edit</a>
             </div>
         </div>
     </div>
 
-    <div class="card mt-4" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title"><?= $data['siswa']['nama']; ?></h5>
-            <p class="card-text"><?= $data['siswa']['jenis_kelamin']; ?></p>
-            <p class="card-text"><?= $data['siswa']['alamat']; ?></p>
-        </div>
-    </div>
 </div>

@@ -33,33 +33,35 @@ class SiswaModel
     {
         $getId = $this->getId();
         $id = $getId['id'] + 1;
-        $nama = $data['nama'];
-        $jenis_kelamin = $data['jenis_kelamin'];
-        $alamat = $data['alamat'];
 
-        $query = "insert into " . $this->table . " values ('$id', '$nama' , '$jenis_kelamin', '$alamat')";
+        $query = "insert into " . $this->table . " values (:id, :nama, :jenis_kelamin, :alamat)";
         $this->db->query($query);
+        $this->db->bind('id', $id);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
+        $this->db->bind('alamat', $data['alamat']);
         $this->db->execute();
+        return $this->db->rowCount();
     }
 
-    public function editData($data)
+    public function updateData($data)
     {
-        $id = $data['id'];
-        $nama = $data['nama'];
-        $jenis_kelamin = $data['jenis_kelamin'];
-        $alamat = $data['alamat'];
-
-        $query = "UPDATE " . $this->table . " SET id='$id',nama='$nama',jenis_kelamin='$jenis_kelamin',alamat='$alamat' where id='$id'";
+        $query = "UPDATE " . $this->table . " SET id=:id, nama=:nama, jenis_kelamin=:jenis_kelamin, alamat=:alamat where id=:id";
         $this->db->query($query);
+        $this->db->bind('id', $data['id']);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
+        $this->db->bind('alamat', $data['alamat']);
         $this->db->execute();
+        return $this->db->rowCount();
     }
 
     public function hapusData($data)
     {
-        $id = $data['id'];
-
-        $query = "DELETE FROM " . $this->table . " where id='$id'";
+        $query = "DELETE FROM " . $this->table . " where id=:id";
         $this->db->query($query);
+        $this->db->bind('id', $data['id']);
         $this->db->execute();
+        return $this->db->rowCount();
     }
 }

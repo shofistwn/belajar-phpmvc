@@ -19,38 +19,46 @@ class Siswa extends Controller
         $this->view('templates/footer');
     }
 
-    public function tambah()
+    public function edit($id)
     {
-        $data['nama'] = $_POST['nama'];
-        $data['jenis_kelamin']    = $_POST['jenis_kelamin'];
-        $data['alamat'] = $_POST['alamat'];
-        
-        $this->model('SiswaModel')->tambahData($data);
-        if (!empty($data)) {
-            header('Location: ' . BASE_URL . '/siswa');
-        }
+        $data['judul'] = "Detail Siswa";
+        $data['siswa'] = $this->model('SiswaModel')->getSiswaById($id);
+        $this->view('templates/header', $data);
+        $this->view('siswa/edit', $data);
+        $this->view('templates/footer');
     }
 
-    public function edit()
+    public function tambah()
     {
-        $data['id'] = $_POST['id'];
-        $data['nama'] = $_POST['nama'];
-        $data['jenis_kelamin']    = $_POST['jenis_kelamin'];
-        $data['alamat'] = $_POST['alamat'];
-
-        $this->model('SiswaModel')->editData($data);
-        if (!empty($data)) {
-            header('Location: ' . BASE_URL . '/siswa/detail/' . $data['id']);
+        if ($this->model('SiswaModel')->tambahData($_POST) > 0) {
+            Flasher::setFlash('Data berhasil ditambahkan!', 'success');
+        } else {
+            Flasher::setFlash('Data gagal ditambahkan!', 'danger');
         }
+        header('Location: ' . BASE_URL . '/siswa');
+        exit;
+    }
+
+    public function update()
+    {
+        if ($this->model('SiswaModel')->updateData($_POST) > 0) {
+            Flasher::setFlash('Data berhasil diupdate!', 'success');
+        } else {
+            Flasher::setFlash('Data gagal diupdate!', 'danger');
+        }
+        header('Location: ' . BASE_URL . '/siswa/');
+        exit;
     }
 
     public function hapus()
     {
-        $data['id'] = $_POST['id'];
-        
-        $this->model('SiswaModel')->hapusData($data);
-        if (!empty($data)) {
-            header('Location: ' . BASE_URL . '/siswa');
+        var_dump($_POST);
+        if ($this->model('SiswaModel')->hapusData($_POST) > 0) {
+            Flasher::setFlash('Data berhasil dihapus!', 'success');
+        } else {
+            Flasher::setFlash('Data gagal dihapus!', 'danger');
         }
+        header('Location: ' . BASE_URL . '/siswa/');
+        exit;
     }
 }

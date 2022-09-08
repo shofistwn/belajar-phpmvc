@@ -2,36 +2,70 @@
 
 class GuruModel
 {
-    private $guru = [
-        [
-            "foto" => "img/woman.png",
-            "nama" => "NOVI DYAH PUSPITASARI, S.Pd",
-            "mapel" => "RPL"
-        ],
-        [
-            "foto" => "img/woman.png",
-            "nama" => "SAFIRA MAYA SHOVIE, S.Pd",
-            "mapel" => "RPL"
-        ],
-        [
-            "foto" => "img/woman.png",
-            "nama" => "ERVI RAHMAWATI, ST",
-            "mapel" => "RPL"
-        ],
-        [
-            "foto" => "img/woman.png",
-            "nama" => "FIKROTU DWI FUADATUZZAHRO",
-            "mapel" => "RPL"
-        ],
-        [
-            "foto" => "img/woman.png",
-            "nama" => "WAHYU TRI WULYANSARI, S.Pd",
-            "mapel" => "RPL"
-        ],
-    ];
+    private $table = 'data_guru';
+    private $db;
+
+    public function __construct()
+    {
+        $this->db = new Database;
+    }
 
     public function getGuru()
     {
-        return $this->guru;
+        $this->db->query("select * from " . $this->table);
+        return $this->db->resultAll();
+    }
+
+    public function getJurusan()
+    {
+        $this->db->query("select * from data_jurusan");
+        return $this->db->resultAll();
+    }
+
+    public function getGuruById($id)
+    {
+        $this->db->query("select * from " . $this->table . " where id=:id");
+        $this->db->bind('id', $id);
+        return $this->db->resultSingle();
+    }
+
+    public function getId()
+    {
+        $this->db->query("SELECT id FROM " . $this->table . " ORDER BY id DESC LIMIT 1");
+        return $this->db->resultSingle();
+    }
+
+    public function tambahData($data)
+    {
+        $getId = $this->getId();
+        $id = $getId['id'] + 1;
+
+        $query = "insert into " . $this->table . " values (:id, :nama, :mata_pelajaran)";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('mata_pelajaran', $data['mata_pelajaran']);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function updateData($data)
+    {
+        $query = "UPDATE " . $this->table . " SET id=:id, nama=:nama, mata_pelajaran=:mata_pelajaran where id=:id";
+        $this->db->query($query);
+        $this->db->bind('id', $data['id']);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('mata_pelajaran', $data['mata_pelajaran']);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function hapusData($data)
+    {
+        $query = "DELETE FROM " . $this->table . " where id=:id";
+        $this->db->query($query);
+        $this->db->bind('id', $data['id']);
+        $this->db->execute();
+        return $this->db->rowCount();
     }
 }
