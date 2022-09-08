@@ -1,16 +1,8 @@
 <?php
 class Jurusan extends Controller
 {
-    public function index()
-    {
-        $data['judul'] = "Data Jurusan";
-        $data['jurusan'] = $this->model('JurusanModel')->getJurusan();
-        $this->view('templates/header', $data);
-        $this->view('jurusan/index', $data);
-        $this->view('templates/footer');
-    }
 
-    public function detail($id)
+    public function index($id)
     {
         $data['judul'] = "Detail Jurusan";
         $data['jurusan'] = $this->model('JurusanModel')->getJurusan();
@@ -21,6 +13,18 @@ class Jurusan extends Controller
         $this->view('jurusan/detail', $data);
         $this->view('templates/footer');
     }
+
+    // public function detail($id)
+    // {
+    //     $data['judul'] = "Detail Jurusan";
+    //     $data['jurusan'] = $this->model('JurusanModel')->getJurusan();
+    //     $data['data_jurusan'] = $this->model('JurusanModel')->getJurusanById($id);
+    //     $data['siswa'] = $this->model('JurusanModel')->getSiswaByJurusan($data['data_jurusan']['nama']);
+    //     $data['guru'] = $this->model('JurusanModel')->getGuruByJurusan($data['data_jurusan']['nama']);
+    //     $this->view('templates/header', $data);
+    //     $this->view('jurusan/detail', $data);
+    //     $this->view('templates/footer');
+    // }
 
     // public function edit($id)
     // {

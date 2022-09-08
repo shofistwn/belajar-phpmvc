@@ -1,4 +1,4 @@
-<div id="content" class="container">
+<div id="content" class="container mb-5">
 
 <h1 class="text-center">Selamat Datang di <?= $data['data_jurusan']['nama']; ?></h1>
     <div class="card mt-5">

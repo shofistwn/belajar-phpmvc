@@ -1,4 +1,4 @@
-<div id="content" class="container">
+<div id="content" class="container mb-5">
 
     <div class="card mx-auto" style="width: 28rem;">
         <div class="card-body">

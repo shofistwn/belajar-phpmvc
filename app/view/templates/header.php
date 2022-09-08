@@ -29,7 +29,7 @@
                         <ul class="dropdown-menu">
 
                             <?php foreach ($data['jurusan'] as $jurusan) : ?>
-                                <li><a class="dropdown-item" href="<?= BASE_URL; ?>/jurusan/detail/<?= $jurusan['id']; ?>"><?= $jurusan['nama']; ?></a></li>
+                                <li><a class="dropdown-item" href="<?= BASE_URL; ?>/jurusan/<?= $jurusan['id']; ?>"><?= $jurusan['nama']; ?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </li>
